@@ -1,0 +1,39 @@
+# Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Environment variables
+.env
+*.env
+# Terraform files
+.terraform/
+*.lock.hcl
+*.tfstate*
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Flask instance folder
+instance/
+
+# Flask static files
+static/
+
+# Logs
+*.log
+
+# Database files
+*.sqlite3
+*.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
