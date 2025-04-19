@@ -45,6 +45,12 @@ jobs:
         sudo apt update
         sudo apt install -y ansible
 
+    - name: Disable SSH host key checking
+      run: |
+        echo "[defaults]" > ansible/ansible.cfg
+        echo "host_key_checking = False" >> ansible/ansible.cfg
+    
+
     - name: Write SSH Private Key
       run: |
         mkdir -p ~/.ssh
@@ -54,7 +60,7 @@ jobs:
     - name: Create Ansible Inventory
       run: |
         echo "[webserver]" > ansible/inventory.ini
-        echo "35.171.33.134 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa" >> ansible/inventory.ini
+        echo "${{ secrets.EC2_PUBLIC_IP }} ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa" >> ansible/inventory.ini
 
     - name: Run Ansible Playbook
       run: |
