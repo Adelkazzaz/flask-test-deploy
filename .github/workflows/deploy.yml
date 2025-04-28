@@ -10,7 +10,7 @@ jobs:
 
     env:
       AWS_REGION: ${{ secrets.AWS_REGION }}
-      ECR_REPO_URL: ${{ secrets.ECR_REPO_URL }}
+      ECR_REPO_URL: 058264170818.dkr.ecr.us-east-1.amazonaws.com/my-app:latest
       EC2_PUBLIC_IP: ${{ secrets.EC2_PUBLIC_IP }}
       IMAGE_TAG: latest
 
