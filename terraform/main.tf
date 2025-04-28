@@ -33,8 +33,8 @@ resource "aws_route_table_association" "a" {
 
 # Security Group
 resource "aws_security_group" "instance_sg" {
-  name        = "flask-app-sg"
-  description = "Allow HTTP, Flask port, and SSH"
+  name        = "easy-deploy-app-sg"
+  description = "Allow HTTP, easy deploye port, and SSH"
   vpc_id      = aws_vpc.main.id
 
   ingress {
@@ -68,7 +68,7 @@ resource "aws_security_group" "instance_sg" {
 
 # Key Pair
 resource "aws_key_pair" "deployer_key" {
-  key_name   = "flask-key"
+  key_name   = "deployer-key"
   public_key = file(var.public_key_path)
 }
 
@@ -109,7 +109,7 @@ resource "aws_instance" "ec2" {
   iam_instance_profile        = aws_iam_instance_profile.ec2_profile.name
 
   tags = {
-    Name = "flask-app-instance"
+    Name = "easy-deploy-instance"
   }
 
   provisioner "local-exec" {
@@ -123,6 +123,6 @@ resource "aws_eip" "ip" {
 }
 
 # ECR Repository
-resource "aws_ecr_repository" "flask_repo" {
-  name = "flask-app-repo"
+resource "aws_ecr_repository" "easy_deploy_repo" {
+  name = "easy-deploy-repo"
 }
